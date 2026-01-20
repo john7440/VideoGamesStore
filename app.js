@@ -46,5 +46,21 @@ class Store{
         games.push(game);
         localStorage.setItem('games', JSON.stringify(games));
     }
+}
 
+// La classe pour gérer le panier
+class Cart{
+    constructor(){
+        this.items = [];
+    }
+    // méthode pour ajouter un jeu au panier
+    addItem(game){
+        const existingItem = this.items.find(item => item.game.id === game.id);
+        if(existingItem){
+            existingItem.quantity++;
+        } else {
+            this.items.push({ game, quantity: 1 });
+        }
+        //TODO mettre a jour l'UI
+    }
 }
