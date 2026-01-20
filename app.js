@@ -25,12 +25,12 @@ class Store{
             // note: je sépare volontaireemnt avec un commentaire les données tout les 4 jeux pour refléter l'affichage du site
             games = [
                 // La première ligne de jeux
-                new Game(1, "The Legend of Zelda: Breath of the Wild", 59.99, "Aventure", "zelda.jpg", "Explorez le vaste monde d'Hyrule sur votre fidèle poney"),
-                new Game(2, "Cyberpunk 2077", 49.99, "RPG", "cyberpunk2077.jpg", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
-                new Game(3, "GTA VI", 79.99, "Action", "gta6.jppg", "Moins bien que Wordle et le jeu précédent mais plus cher"),
-                new Game(4, "God of War", 39.99, "Action", "godofwar.jpg", "Incarnez Kratos dans sa quête épique à travers le nord (de la France)"),
+                new Game(1, "The Legend of Zelda: Breath of the Wild", 59.99, "Aventure", "imageszelda.jpg", "Explorez le vaste monde d'Hyrule sur votre fidèle poney"),
+                new Game(2, "Cyberpunk 2077", 49.99, "RPG", "imagescyberpunk2077.jpg", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
+                new Game(3, "GTA VI", 79.99, "Action", "imagesgta6.webp", "Moins bien que Wordle et le jeu précédent mais plus cher"),
+                new Game(4, "God of War", 39.99, "Action", "images/god-of-war.jpg", "Incarnez Kratos dans sa quête épique à travers le nord (de la France)"),
                 // 2ème ligne
-                new Game(5, "World of Warcraft", 29.99, "MEUPORG", "wow.jpg", "Rejoignez des milliards de joueurs dans ce MEUPORG légendaire et vivez des aventures épiques dans le monde d'Azeroth"),
+                new Game(5, "World of Warcraft", 29.99, "MEUPORG", "imageswow.jpg", "Rejoignez des milliards de joueurs dans ce MEUPORG légendaire et vivez des aventures épiques dans le monde d'Azeroth"),
                 //TODO ajouter des autres jeux
             ];
 
@@ -129,4 +129,46 @@ class Cart{
         
         totalDisplay.innerText = this.getTotal().toFixed(2);
     }
+}
+
+//---------------------------------gestion de l'affichage---------------------------//
+class UI{
+    // méthode pour afficher les jeux sur la page
+    static displayGames(games){
+        const listContainer = document.getElementById('game-list');
+        listContainer.innerHTML = '';
+
+        games.forEach(game => {
+            const col = document.createElement('div');
+            col.className = 'col';
+            // création de la carte du jeu
+            col.innerHTML = `
+                <div class="card h-100 shadow-sm border-0"> <img src="${game.image}" class="card-img-top" alt="${game.title}">
+                    
+                    <div class="card-body d-flex flex-column">
+                        
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h5 class="card-title mb-0 text-truncate" style="max-width: 70%;" title="${game.title}">
+                                ${game.title}
+                            </h5>
+                            <span class="fs-5 fw-bold text-primary text-nowrap">
+                                ${game.price} €
+                            </span>
+                        </div>
+
+                        <div class="mt-auto d-flex gap-2">
+                            <button class="btn btn-outline-dark flex-grow-1 details-btn" data-id="${game.id}">
+                                <i class="bi bi-eye"></i> Voir
+                            </button>
+                            <button class="btn btn-success add-to-cart-btn" data-id="${game.id}">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            listContainer.appendChild(col);
+        });
+    }
+
 }
