@@ -69,4 +69,14 @@ class Cart{
         this.items = this.items.filter(item => item.game.id !== Number.parseInt(gameId));
         //TODO mettre a jour l'UI
     }
+
+    // méthode pour changer la quantité dans le panier
+    updateQuantity(gameId, newQuantity){
+        const item = this.items.find(item => item.game.id === Number.parseInt(gameId));
+        if(item){
+            item.quantity += newQuantity;
+            if (item.quantity <= 0) this.removeItem(gameId);
+            //Metter a jour l'UI
+        }
+    }
 }
