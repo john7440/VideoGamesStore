@@ -25,12 +25,12 @@ class Store{
             // note: je sépare volontaireemnt avec un commentaire les données tout les 4 jeux pour refléter l'affichage du site
             games = [
                 // La première ligne de jeux
-                new Game(1, "The Legend of Zelda: Breath of the Wild", 59.99, "Aventure", "imageszelda.jpg", "Explorez le vaste monde d'Hyrule sur votre fidèle poney"),
-                new Game(2, "Cyberpunk 2077", 49.99, "RPG", "imagescyberpunk2077.jpg", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
-                new Game(3, "GTA VI", 79.99, "Action", "imagesgta6.webp", "Moins bien que Wordle et le jeu précédent mais plus cher"),
+                new Game(1, "The Legend of Zelda: Breath of the Wild", 59.99, "Aventure", "images/zelda.jpg", "Explorez le vaste monde d'Hyrule sur votre fidèle poney"),
+                new Game(2, "Cyberpunk 2077", 49.99, "RPG", "images/cyberpunk2077.jpg", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
+                new Game(3, "GTA VI", 79.99, "Action", "images/gta6.webp", "Moins bien que Wordle et le jeu précédent mais plus cher"),
                 new Game(4, "God of War", 39.99, "Action", "images/god-of-war.jpg", "Incarnez Kratos dans sa quête épique à travers le nord (de la France)"),
                 // 2ème ligne
-                new Game(5, "World of Warcraft", 29.99, "MEUPORG", "imageswow.jpg", "Rejoignez des milliards de joueurs dans ce MEUPORG légendaire et vivez des aventures épiques dans le monde d'Azeroth"),
+                new Game(5, "World of Warcraft", 29.99, "MEUPORG", "images/wow.jpg", "Rejoignez des milliards de joueurs dans ce MEUPORG légendaire et vivez des aventures épiques dans le monde d'Azeroth"),
                 //TODO ajouter des autres jeux
             ];
 
@@ -251,13 +251,13 @@ class UI{
 //panier global
 const myCart = new Cart();
 
-// événement au chargement de la page
+// événements au chargement de la page
 document.addEventListener('DOMContentLoaded', () => {
     //afficher les jeux
     UI.displayGames(Store.getGames());
     UI.setupCategories();
 
-    //gestion evenements de la grille des jeux
+    //  ------gestion evenements de la grille des jeux
     document.getElementById('game-list').addEventListener('click', (e) => {
         // clic 'ajouter au panier'
         if(e.target.closest('.add-to-cart-btn')){
@@ -275,3 +275,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ------------gestion evenements panier
+    document.getElementById('cart-items-container').addEventListener('click', (e) => {
+        // --changement quantité
+        if(e.target.classList.contains('qty-btn')){
+            const id = e.target.dataset.id;
+            const action = e.target.dataset.action;
+            const change = action === '+' ? 1 : -1;
+            myCart.updateQuantity(id, change);
+        }
+
+        // --suppression
+        if (e.target.classList.contains('remove-btn')){
+            const btn = e.target.closest('.remove-btn');
+            myCart.removeItem(btn.dataset.id);
+        }
+    });
+
+    // --valider commande
+    document.getElementById('validate-order').addEventListener('click', () => {
+        if (myCart.items.length > 0){
+            alert('Merci pour votre commande !');
+            myCart.clearCart();
+            //fermer la modal
+            const modalElement = document.getElementById('cartModal');
+            const modal = bootstrap.Modal.getInstance(modalElement); 
+            modal.hide();
+        } else {
+            alert('Votre panier est vide.');
+        }
+    });
+
+    document.getElementById('add-game-form').addEventListener('submit', (e) => {
+    e.preventDefault(); 
+    
+    const title = document.getElementById('admin-title').value;
+    const image = document.getElementById('admin-image').value;
+    const desc = document.getElementById('admin-desc').value;
+    const category = document.getElementById('admin-category').value;
+    const price = document.getElementById('admin-price').value;
+    
+    const id = Date.now(); 
+    const newGame = new Game(id, title, price, category, image, desc);
+    
+    Store.addGame(newGame); 
+    UI.displayGames(Store.getGames()); 
+    UI.setupCategories();
+    
+    e.target.reset();
+
+    // Fermer la modale après l'ajout
+    const modalEl = document.getElementById('adminModal');
+    const modal = bootstrap.Modal.getInstance(modalEl);
+    modal.hide();
+
+    alert('Jeu ajouté avec succès !');
+});
+});
