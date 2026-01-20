@@ -17,11 +17,12 @@ class Game{
 // Classe Store pour gérer les jeux disponibles en Local Storage
 // pour simuler une base de données
 class Store{
+    // méthode poure récuperer les jeux depuis le local storage
     static getGames() {
         let games;
         if(localStorage.getItem("games") === null){
             // Les données par défaut pour le site pusiqu'il n'y a pas encore de jeux en Local Storage
-            // Note: je sépare volontaireemnt avec un espaces les données tout les 4 jeux pour refléter l'affichage du site
+            // note: je sépare volontaireemnt avec un commentaire les données tout les 4 jeux pour refléter l'affichage du site
             games = [
                 // La première ligne de jeux
                 new Game(1, "The Legend of Zelda: Breath of the Wild", 59.99, "Aventure", "zelda.jpg", "Explorez le vaste monde d'Hyrule sur votre fidèle poney"),
@@ -37,6 +38,13 @@ class Store{
             games = JSON.parse(localStorage.getItem('games'));
     }
         return games;
+    }
+
+    // méthode pour ajouter un jeu au local storage
+    static addGame(game){
+        const games = Store.getGames(); 
+        games.push(game);
+        localStorage.setItem('games', JSON.stringify(games));
     }
 
 }
