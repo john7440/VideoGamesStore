@@ -171,4 +171,15 @@ class UI{
         });
     }
 
+    //méthode pour filtrer les jeux par catégorie
+    static filterGames(category){
+        const games = Store.getGames();
+        if(category === 'All'){
+            UI.displayGames(games);
+        } else {
+            const filteredgames = games.filter(game => game.category === category);
+            UI.displayGames(filteredgames);
+        }
+    }
+    
 }
