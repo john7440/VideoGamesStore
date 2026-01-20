@@ -242,7 +242,36 @@ class UI{
             const myModal = new bootstrap.Modal(document.getElementById('productModal'));
             myModal.show();
         }
-    }
-
+    } 
 
 }
+
+//-------------------initialisation et gestion événements------------------//
+
+//panier global
+const myCart = new Cart();
+
+// événement au chargement de la page
+document.addEventListener('DOMContentLoaded', () => {
+    //afficher les jeux
+    UI.displayGames(Store.getGames());
+    UI.setupCategories();
+
+    //gestion evenements de la grille des jeux
+    document.getElementById('game-list').addEventListener('click', (e) => {
+        // clic 'ajouter au panier'
+        if(e.target.closest('.add-to-cart-btn')){
+            const btn = e.target.closest('.add-to-cart-btn');
+            const id = btn.dataset.id;
+            const game = Store.getGames().find(g => g.id == id);
+            myCart.addItem(game);
+        }
+
+        // le clic sur 'détails"
+        if(e.target.closest('.details-btn')){
+            const btn = e.target.closest('.details-btn');
+            const id = btn.dataset.id;
+            UI.openProductModal(id);
+        }
+    });
+
