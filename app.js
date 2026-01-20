@@ -181,5 +181,35 @@ class UI{
             UI.displayGames(filteredgames);
         }
     }
-    
+
+    static setupCategories(){
+        const games= Store.getGames();
+        //on récupère les catégories uniques
+        const categories = ['All', ...new Set(games.map(game => game.category))];
+        const categoryContainer = document.getElementById('category-filters');
+
+        categoryContainer.innerHTML = '';
+
+        categories.forEach(cat => {
+            const btn = document.createElement('button');
+            btn.className = `btn ${cat === 'all' ? 'btn-dark' : 'btn-outline-dark'}`;
+            btn.textContent = cat === 'all' ? 'Tout' : cat;
+            btn.dataset.category = cat;
+
+            btn.addEventListener('click', (e) => {
+                // gestion visuelle du bouton actif 
+                document.querySelectorAll('#category-filters .btn').forEach(b => {
+                    b.classList.remove('btn-dark');
+                    b.classList.add('btn-outline-dark');
+                });
+                e.target.classList.remove('btn-outline-dark');
+                e.target.classList.add('btn-dark');
+
+                // on filtre les jeux
+                UI.filterGames(cat);
+        });
+            categoryContainer.appendChild(btn);
+        });
+    }
+
 }
