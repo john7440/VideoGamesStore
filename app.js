@@ -61,22 +61,23 @@ class Cart{
         } else {
             this.items.push({ game, quantity: 1 });
         }
-        //TODO mettre a jour l'UI
+        this.updateUI();
     }
-
+    
     //méthode pour supprimer un jeu du panier
     removeItem(gameId){
         this.items = this.items.filter(item => item.game.id !== Number.parseInt(gameId));
-        //TODO mettre a jour l'UI
+        this.updateUI();
+        
     }
-
+    
     // méthode pour changer la quantité dans le panier
     updateQuantity(gameId, newQuantity){
         const item = this.items.find(item => item.game.id === Number.parseInt(gameId));
         if(item){
             item.quantity += newQuantity;
             if (item.quantity <= 0) this.removeItem(gameId);
-            //Metter a jour l'UI
+            else this.updateUI();
         }
     }
 
@@ -88,6 +89,44 @@ class Cart{
     // méthode pour vider le panier
     clearCart(){
         this.items = [];
-        //TODO mettre a jour l'UI
+        this.updateUI();
+    }
+
+    // méthode pour mettre a jour l'ui du panier
+    updateUI() {
+        //le badge du compteur pour le panier
+        const totalCount = this.items.reduce((acc, item) => acc + item.quantity,0);
+        document.getElementById('cart-count').innerText = totalCount;
+
+        //liste pour la modal du panier
+        const cartContainer = document.getElementById('cart-items-container');
+        const totalDisplay = document.getElementById('cart-total');
+
+        cartContainer.innerHTML = '';
+
+        //gestion panier vide
+        if (this.items.length === 0) {
+            cartContainer.innerHTML = '<p class="text-center text-muted">Votre panier est vide.</p>';
+        } else {
+            this.items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'd-flex justify-content-between align-items-center mb-3 border-bottom pb-2';
+                div.innerHTML = `
+                    <div>
+                        <h6 class="mb-0">${item.game.title}</h6>
+                        <small class="text-muted">${item.game.price} € x ${item.quantity}</small>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-sm btn-outline-secondary qty-btn" data-id="${item.game.id}" data-action="-">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="btn btn-sm btn-outline-secondary qty-btn" data-id="${item.game.id}" data-action="+">+</button>
+                        <button class="btn btn-sm btn-danger remove-btn" data-id="${item.game.id}"><i class="bi bi-trash"></i></button>
+                    </div>
+                `;
+                cartContainer.appendChild(div);
+            });
+        }
+        
+        totalDisplay.innerText = this.getTotal().toFixed(2);
     }
 }
