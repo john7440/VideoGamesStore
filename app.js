@@ -28,6 +28,15 @@ class Store{
                 new Game(2, "Cyberpunk 2077", 49.99, "RPG", "cyberpunk2077.jpg", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
                 new Game(3, "GTA VI", 79.99, "Action", "gta6.jppg", "Moins bien que Wordle et le jeu précédent mais plus cher"),
                 new Game(4, "God of War", 39.99, "Action", "godofwar.jpg", "Incarnez Kratos dans sa quête épique à travers le nord (de la France)"),
+                // 2ème ligne
+                new Game(5, "World of Warcraft", 29.99, "MEUPORG", "wow.jpg", "Rejoignez des milliards de joueurs dans ce MEUPORG légendaire et vivez des aventures épiques dans le monde d'Azeroth"),
+                //TODO ajouter des autres jeux
+            ];
 
+    } else {
+            games = JSON.parse(localStorage.getItem('games'));
     }
+        return games;
+    }
+
 }
