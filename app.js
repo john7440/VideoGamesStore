@@ -182,6 +182,7 @@ class UI{
         }
     }
 
+    // méthode pour configurer les boutons de catégories
     static setupCategories(){
         const games= Store.getGames();
         //on récupère les catégories uniques
@@ -211,5 +212,37 @@ class UI{
             categoryContainer.appendChild(btn);
         });
     }
+
+    // méthode pour ouvrir la modale des détails du jeu
+    static openProductModal(gameId){
+        const games = Store.getGames();
+        const game = games.find(g => g.id == gameId);
+
+        if(game){
+            document.getElementById('modal-title').innerText = game.title;
+            document.getElementById('modal-category').innerText = game.category;
+            document.getElementById('modal-price').innerText = game.price;
+            document.getElementById('modal-desc').innerText = game.description;
+            document.getElementById('modal-img').src = game.image;
+
+            // config du bouton ajouter pour savoir quel jeu ajouter
+            const addBtn = document.getElementById('modal-add-btn');
+            //ensuite on clone le bouton pour enlever les anciens listeners
+            const newAddBtn = addBtn.cloneNode(true);
+            addBtn.parentNode.replaceChild(newAddBtn, addBtn);
+
+            newAddBtn.addEventListener('click', () => {
+                myCart.addItem(game);
+                //on ferme la modal après l'ajout
+                const modalElement = document.getElementById('productModal');
+                const modal = bootstrap.Modal.getInstance(modalElement); 
+                modal.hide();
+            });
+            //ouvre la modale de bootstrap
+            const myModal = new bootstrap.Modal(document.getElementById('productModal'));
+            myModal.show();
+        }
+    }
+
 
 }
