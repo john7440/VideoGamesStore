@@ -79,4 +79,15 @@ class Cart{
             //Metter a jour l'UI
         }
     }
+
+    // méthode pour calculer le total du panier
+    getTotal(){
+        return this.items.reduce((total, item) => total + item.game.price * item.quantity, 0);
+    }
+
+    // méthode pour vider le panier
+    clearCart(){
+        this.items = [];
+        //TODO mettre a jour l'UI
+    }
 }
