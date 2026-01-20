@@ -63,4 +63,10 @@ class Cart{
         }
         //TODO mettre a jour l'UI
     }
+
+    //méthode pour supprimer un jeu du panier
+    removeItem(gameId){
+        this.items = this.items.filter(item => item.game.id !== Number.parseInt(gameId));
+        //TODO mettre a jour l'UI
+    }
 }
