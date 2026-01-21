@@ -307,13 +307,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('validate-order').addEventListener('click', () => {
         if (myCart.items.length > 0){
             alert('Merci pour votre commande !');
+            // ajout prix total dans une alerte
+            const totalPrice = myCart.getTotal().toFixed(2);
+            alert(`Commande validé! Total: ${totalPrice} €`);
+            //vider le panier
             myCart.clearCart();
             //fermer la modal
             const modalElement = document.getElementById('cartModal');
             const modal = bootstrap.Modal.getInstance(modalElement); 
             modal.hide();
         } else {
-            alert('Votre panier est vide.');
+            alert('Votre panier est vide !');
         }
     });
 
