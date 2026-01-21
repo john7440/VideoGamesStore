@@ -1,0 +1,100 @@
+/*-------------------STYLE GÉNÉRAL---------------------------------*/
+body {
+    background-color: #f8f9fa;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* --------------------LES CARDS--------------------------*/
+.card {
+    border-radius: 25px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+}
+
+.game-card {
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card-img-top {
+    height: 350px;
+    object-fit: cover;
+    object-position: top center;
+    width: 100%;
+}
+
+
+.add-to-cart-btn {
+    z-index: 2;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.add-to-cart-btn:active {
+    transform: scale(0.95);
+}
+
+/*-------------------MODALES--------------------------*/
+
+.modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+#modal-img {
+    height: 500px;
+    width: 100%;
+    object-fit: contain;
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    #modal-img {
+        height: 300px;
+    }
+}
+
+.login-title {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; /* Pour rappeler le style croquis */
+}
+
+
+.category-pills .btn {
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: capitalize;
+}
+
+/*-------------------FOOTER--------------------------*/
+
+
+footer a {
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #0d6efd !important;
+    padding-left: 5px;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    color: #0d6efd !important;
+}
