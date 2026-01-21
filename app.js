@@ -249,6 +249,20 @@ class UI{
                 const modal = bootstrap.Modal.getInstance(modalElement); 
                 modal.hide();
             });
+            //botun acheter maintenant
+            const buyBtn = document.getElementById('modal-buy-btn');
+            if (buyBtn){
+                const newBuyBtn = buyBtn.cloneNode(true);
+                buyBtn.parentNode.replaceChild(newBuyBtn, buyBtn);
+
+                newBuyBtn.addEventListener('click', () => {
+                    alert(`Merci pour votre achat de "${game.title}" pour ${game.price} €`);
+                    
+                const modalElement = document.getElementById('productModal');
+                const modal = bootstrap.Modal.getInstance(modalElement); 
+                modal.hide();
+            });
+        }
             //ouvre la modale de bootstrap
             const myModal = new bootstrap.Modal(document.getElementById('productModal'));
             myModal.show();
