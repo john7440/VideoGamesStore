@@ -65,11 +65,6 @@ body {
     }
 }
 
-.login-title {
-    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; /* Pour rappeler le style croquis */
-}
-
-
 .category-pills .btn {
     border-radius: 20px;
     padding-left: 20px;
