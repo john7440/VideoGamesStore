@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
             myCart.addItem(game);
         }
 
-        // le clic sur 'détails"
+        //clic sur 'détails"
         if(e.target.closest('.details-btn')){
             const btn = e.target.closest('.details-btn');
             const id = btn.dataset.id;
@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const image = document.getElementById('admin-image').value;
     const desc = document.getElementById('admin-desc').value;
     const category = document.getElementById('admin-category').value;
-    const price = document.getElementById('admin-price').value;
+    const price = Number.parseFloat(document.getElementById('admin-price').value);
     
     const id = Date.now(); 
     const newGame = new Game(id, title, price, category, image, desc);
@@ -344,6 +344,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = bootstrap.Modal.getInstance(modalEl);
     modal.hide();
 
-    alert('Jeu ajouté avec succès !');
+    alert(`Jeu "${title}" ajouté avec succès !`);
 });
 });
