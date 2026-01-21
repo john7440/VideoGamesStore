@@ -6,6 +6,9 @@
 - [Fonctionnalités](#fonctionalités)
 - [Technologies Utilisées](#technologies-utilisées)
 - [Structure du projet](#structure-du-projet)
+- [Architecture du code](#architecture-du-code)
+- [Choix de design et UX](#choix-de-design-et-ux)
+  
 
 ## Fonctionnalités
 
@@ -55,4 +58,23 @@ project/
    ├─ power2.jpg
    └─ starfiel.jpg(etc.)
 ```
- 
+## Architecture du code
+
+Le code JavaScript (`app.js`) est structuré autour de 4 classes principales pour respecter le principe de séparation des responsabilités :
+1.  **`class Game`** : Définit le modèle de données d'un jeu (ID, titre, prix, méthode de formatage...)
+2.  **`class Store`** : Gère la persistance des données (avec LocalStorage)
+3.  **`class Cart`** : Gère la logique métier du panier (ajout, suppression, calcul du total)
+4.  **`class UI`** : Gère uniquement la manipulation du DOM (affichage des cartes, gestion des modales, filtres...)
+
+## Choix de Design et UX
+
+- **Cartes épurées :** Affichage prioritaire du visuel et du prix. L'interaction se fait au clic sur la carte entière
+- **Feedback Utilisateur :**
+    * Les boutons changent d'état au survol
+    * Des alertes confirment les actions (ajout panier, commande validée)
+   **Modales :** Utilisation intensive des modales pour éviter les rechargements de page et garder l'utilisateur dans le contexte d'achat
+
+
+
+
+
