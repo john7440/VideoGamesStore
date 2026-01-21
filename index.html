@@ -12,6 +12,18 @@
         background-color: #f8f9fa; 
         }
 
+        .card{
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-9px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
         .admin-panel {
             border: 2px solid #0d6efd; 
             background-color: #ffffff;
@@ -28,9 +40,8 @@
         .card-img-top {
             height: 300px;
             object-fit: cover;
-            object-position: center;
-            border-radius: 25px;
-            
+            object-position: top center;
+            width: 100%;
         }
 
         #modal-img {
