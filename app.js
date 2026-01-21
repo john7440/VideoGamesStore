@@ -22,16 +22,23 @@ class Store{
         let games;
         if(localStorage.getItem("games") === null){
             // Les données par défaut pour le site pusiqu'il n'y a pas encore de jeux en Local Storage
-            // note: je sépare volontaireemnt avec un commentaire les données tout les 4 jeux pour refléter l'affichage du site
+            // note: je sépare volontaireemnt avec un commentaire les données tout les 5 jeux pour refléter l'affichage du site
             games = [
                 // La première ligne de jeux
                 new Game(1, "The Legend of Zelda: Breath of the Wild", 59.99, "Aventure", "images/zelda.jpg", "Explorez le vaste monde d'Hyrule sur votre fidèle poney"),
                 new Game(2, "Cyberpunk 2077", 49.99, "RPG", "images/cyberpunk2077.jpg", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
                 new Game(3, "GTA VI", 79.99, "Action", "images/gta6.webp", "Moins bien que Wordle et le jeu précédent mais plus cher"),
                 new Game(4, "God of War", 39.99, "Action", "images/god-of-war.jpg", "Incarnez Kratos dans sa quête épique à travers le nord (de la France)"),
-                // 2ème ligne
                 new Game(5, "World of Warcraft", 29.99, "MEUPORG", "images/wow.jpg", "Rejoignez des milliards de joueurs dans ce MEUPORG légendaire et vivez des aventures épiques dans le monde d'Azeroth"),
-                //TODO ajouter des autres jeux
+                // 2ème ligne
+                new Game(6, "Baldur's Gate 3", 59.99, "RPG", "images/bd3.jpg", "Plongez dans une aventure épique dans les Royaumes Oubliés avec des choix qui façonnent votre destin"),
+                new Game(7, "The Witcher 3: Wild Hunt", 39.99, "RPG", "images/witcher3.jpg", "Incarnez Geralt de Riv, un chasseur de monstres solitaire, dans un monde ouvert riche en quêtes et en choix moraux"),
+                new Game(8, "PowerWash Wimulator 2", 49.99, "Simulation", "images/among-us.jpg", "Travaillez en équipe pour accomplir des tâches tout en démasquant les imposteurs parmi vous"),
+                new Game(9, "Groenland: Le Jeu", 99.99, "MEUPORG", "images/fortnite.jpg", "Mettez tout en oeuvre pour acheter le Groenland dans ce MEUPORG révolutionnaire, utilisez la ruse, l'intimidation ainsi que les droits de douanes pour convaincre les autres pays de vous laisser l'acheter!"),
+                new Game(10, "Red Dead Redemption 2", 59.99, "Aventure", "images/rdr2.jpg", "Plongez dans l'Ouest sauvage américain avec Arthur Morgan et la bande de Dutch van der Linde"),
+                // 3ème ligne
+                new Game(11, "Wasteland 3", 79.99, "RPG", "images/wasteland3.jpg", "Explorez un monde post-apocalyptique rempli de dangers et de choix moraux dans ce RPG tactique au tour par tour"),
+                new Game(12, "Fallout 3", 49.99, "RPG", "images/fallout3.jpg", "Explorez les ruines de Washington D.C. dans ce RPG post-apocalyptique acclamé par la critique (et par moi même)"),
             ];
 
     } else {
@@ -40,7 +47,7 @@ class Store{
         return games;
     }
 
-    // méthode pour ajouter un jeu au local storage
+    // méthode pour ajouter un jeu au local storage (bug a corriger: cela bloque la liste des jeux après ajout d'un jeu)
     static addGame(game){
         const games = Store.getGames(); 
         games.push(game);
@@ -106,7 +113,7 @@ class Cart{
 
         //gestion panier vide
         if (this.items.length === 0) {
-            cartContainer.innerHTML = '<p class="text-center text-muted">Votre panier est vide.</p>';
+            cartContainer.innerHTML = '<p class="text-center text-muted"> Votre panier est vide!</p>';
         } else {
             this.items.forEach(item => {
                 const div = document.createElement('div');
@@ -143,9 +150,9 @@ class UI{
             col.className = 'col';
             // création de la carte du jeu
             col.innerHTML = `
-                <div class="card h-100 shadow-sm border-0"> <img src="${game.image}" class="card-img-top" alt="${game.title}">
-                    
-                    <div class="card-body d-flex flex-column">
+                <div class="card h-100 shadow-sm border-0"> 
+                    <img src="${game.image}" class="card-img-top" alt="${game.title}">
+                     <div class="card-body d-flex flex-column">
                         
                         <div class="d-flex justify-content-between align-items-start mb-3">
                             <h5 class="card-title mb-0 text-truncate" style="max-width: 70%;" title="${game.title}">
@@ -174,7 +181,7 @@ class UI{
     //méthode pour filtrer les jeux par catégorie
     static filterGames(category){
         const games = Store.getGames();
-        if(category === 'All'){
+        if(category === 'all'){
             UI.displayGames(games);
         } else {
             const filteredgames = games.filter(game => game.category === category);
@@ -186,7 +193,7 @@ class UI{
     static setupCategories(){
         const games= Store.getGames();
         //on récupère les catégories uniques
-        const categories = ['All', ...new Set(games.map(game => game.category))];
+        const categories = ['all', ...new Set(games.map(game => game.category))];
         const categoryContainer = document.getElementById('category-filters');
 
         categoryContainer.innerHTML = '';
@@ -220,6 +227,10 @@ class UI{
 
         if(game){
             document.getElementById('modal-title').innerText = game.title;
+
+            const catBadge = document.getElementById('modal-category');
+            if(catBadge) catBadge.innerText = game.category;
+
             document.getElementById('modal-category').innerText = game.category;
             document.getElementById('modal-price').innerText = game.price;
             document.getElementById('modal-desc').innerText = game.description;
@@ -286,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // --suppression
-        if (e.target.classList.contains('remove-btn')){
+        if (e.target.closest('.remove-btn')){
             const btn = e.target.closest('.remove-btn');
             myCart.removeItem(btn.dataset.id);
         }
