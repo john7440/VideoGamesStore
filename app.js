@@ -27,18 +27,21 @@ class Store{
                 // La première ligne de jeux
                 new Game(1, "PowerWash Wimulator 2", 49.99, "Simulation", "images/power2.jpg", "Devenez le maître du nettoyage haute pression dans ce jeu de simulation relaxant, satisfaisant et mieux que GTA VI"),
                 new Game(2, "Cyberpunk 2077", 49.99, "RPG", "images/cyberpunk2077.jfif", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
-                new Game(3, "GTA VI", 79.99, "Action", "images/gta6.jpg", "Moins bien que Wordle et le jeu précédent mais plus cher"),
+                new Game(3, "GTA VI", 129.99, "Action", "images/gta6.jpg", "Après des années d'attente et un budget plus important que le PIB de certains pays, ce jeu s'avère être moins bien que Wordle et le jeu précédent mais plus cher!"),
                 new Game(4, "Baldur's Gate 3", 59.99, "RPG", "images/bd3.jpg", "Plongez dans une aventure épique dans les Royaumes Oubliés avec des choix qui façonnent votre destin"),
-                new Game(5, "Groenland: Le Jeu", 99.99, "MEUPORG", "images/groenland.jpg", "Mettez tout en oeuvre pour acheter le Groenland dans ce MEUPORG révolutionnaire, utilisez la ruse, l'intimidation ainsi que les droits de douanes pour convaincre les autres pays de vous laisser l'acheter!"),
+                new Game(5, "Groenland: Le Jeu", 999.99, "MEUPORG", "images/groenland.jpg", "Mettez tout en oeuvre pour acheter le Groenland dans ce MEUPORG révolutionnaire, utilisez la ruse, l'intimidation ainsi que les droits de douanes pour convaincre les autres pays de vous laisser l'acheter!"),
                 // 2ème ligne
+                new Game(11, "Wasteland 3", 39.99, "RPG", "images/wasteland3.avif", "Explorez un monde post-apocalyptique rempli de dangers et de choix moraux dans ce RPG tactique au tour par tour"),
+                new Game(12, "Fallout 3", 49.99, "RPG", "images/fallout3.webp", "Explorez les ruines de Washington D.C. dans ce RPG post-apocalyptique acclamé par la critique (et par moi même)"),
+                new Game(13, "Starfield", 69.99, "RPG", "images/starfield.jpg", "Explorez les confins de l'espace dans ce RPG épique de Bethesda, où chaque étoile cache une nouvelle aventure (procédurale et pas très intéressante pour la plupart des planètes)"),
+                new Game(14, "Oblivion Remastered", 19.99, "RPG", "images/oblivion.jpg", "Redécouvrez le classique RPG d'Oblivion avec des graphismes améliorés et du contenu supplémentaire (le tout pas du tout optimisé sur PC)"),
+                new Game(15, "The Outer Worlds 2", 59.99, "RPG", "images/outerworlds2.jpg", "Plongez dans un univers de science-fiction rempli d'humour noir et de choix moraux dans ce RPG captivant"),
+                // 3ème ligne
                 new Game(6, "The Witcher 3: Wild Hunt", 39.99, "RPG", "images/witcher3.jpg", "Incarnez Geralt de Riv, un chasseur de monstres solitaire, dans un monde ouvert riche en quêtes et en choix moraux"),
                 new Game(7, "The Legend of Zelda: Breath of the Wild", 59.99, "Aventure", "images/zelda.jpg", "Explorez le vaste monde d'Hyrule sur votre fidèle poney"),
                 new Game(8, "Red Dead Redemption 2", 59.99, "Aventure", "images/rdr2.jpg", "Plongez dans l'Ouest sauvage américain avec Arthur Morgan et la bande de Dutch van der Linde"),
                 new Game(9, "God of War", 39.99, "Action", "images/god-of-war.webp", "Incarnez Kratos dans sa quête épique à travers le nord (de la France)"),
-                new Game(10, "World of Warcraft", 29.99, "MEUPORG", "images/wow.webp", "Rejoignez des milliards de joueurs dans ce MEUPORG légendaire et vivez des aventures épiques dans le monde d'Azeroth"),
-                // 3ème ligne
-                new Game(11, "Wasteland 3", 79.99, "RPG", "images/wasteland3.avif", "Explorez un monde post-apocalyptique rempli de dangers et de choix moraux dans ce RPG tactique au tour par tour"),
-                new Game(12, "Fallout 3", 49.99, "RPG", "images/fallout3.webp", "Explorez les ruines de Washington D.C. dans ce RPG post-apocalyptique acclamé par la critique (et par moi même)"),
+                new Game(10, "World of Warcraft", 29.99, "MEUPORG", "images/wow.webp", "Rejoignez des milliards de joueurs dans ce MEUPORG légendaire et vivez des aventures épiques dans le monde d'Azeroth"),     
             ];
 
     } else {
@@ -155,9 +158,9 @@ class UI{
                     
                     <div class="card-body d-flex flex-column">
                         
-                        <h5 class="card-title mb-3 text-truncate" title="${game.title}">
+                        <h4 class="card-title mb-3 text-truncate" title="${game.title}">
                             ${game.title}
-                        </h5>
+                        </h4>
 
                         <div class="mt-auto d-flex justify-content-between align-items-center">
                             
@@ -333,29 +336,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.getElementById('add-game-form').addEventListener('submit', (e) => {
-    e.preventDefault(); 
-    
-    const title = document.getElementById('admin-title').value;
-    const image = document.getElementById('admin-image').value;
-    const desc = document.getElementById('admin-desc').value;
-    const category = document.getElementById('admin-category').value;
-    const price = Number.parseFloat(document.getElementById('admin-price').value);
-    
-    const id = Date.now(); 
-    const newGame = new Game(id, title, price, category, image, desc);
-    
-    Store.addGame(newGame); 
-    UI.displayGames(Store.getGames()); 
-    UI.setupCategories();
-    
-    e.target.reset();
+        document.getElementById('add-game-form').addEventListener('submit', (e) => {
+        e.preventDefault(); 
+        
+        const title = document.getElementById('admin-title').value;
+        const image = document.getElementById('admin-image').value;
+        const desc = document.getElementById('admin-desc').value;
+        const category = document.getElementById('admin-category').value;
+        const price = Number.parseFloat(document.getElementById('admin-price').value);
+        
+        const id = Date.now(); 
+        const newGame = new Game(id, title, price, category, image, desc);
+        
+        Store.addGame(newGame); 
+        UI.displayGames(Store.getGames()); 
+        UI.setupCategories();
+        
+        e.target.reset();
 
-    // Fermer la modale après l'ajout
-    const modalEl = document.getElementById('adminModal');
-    const modal = bootstrap.Modal.getInstance(modalEl);
-    modal.hide();
+        // Fermer la modale après l'ajout
+        const modalEl = document.getElementById('adminModal');
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        modal.hide();
 
-    alert(`Jeu "${title}" ajouté avec succès !`);
-});
+        alert(`Jeu "${title}" ajouté avec succès !`);
+    });
+    
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const modalEl = document.getElementById('loginModal');
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        modal.hide();
+
+        alert('Connexion réussie ! (Fictif)');
+    });
 });
