@@ -17,20 +17,19 @@ class Game{
 // Classe Store pour gérer les jeux disponibles en Local Storage
 // pour simuler une base de données
 class Store{
-    // méthode poure récuperer les jeux depuis le local storage
+    // méthode pour récuperer les jeux depuis le local storage
     static getGames() {
         let games;
         if(localStorage.getItem("games") === null){
             // Les données par défaut pour le site pusiqu'il n'y a pas encore de jeux en Local Storage
-            // note: je sépare volontaireemnt avec un commentaire les données tout les 5 jeux pour refléter l'affichage du site
+            // note: je sépare volontairement avec un commentaire les données tout les 5 jeux pour refléter l'affichage du site
             games = [
                 // La première ligne de jeux
                 new Game(1, "PowerWash Wimulator 2", 49.99, "Simulation", "images/power2.jpg", "Devenez le maître du nettoyage haute pression dans ce jeu de simulation relaxant, satisfaisant et mieux que GTA VI"),
                 new Game(2, "Cyberpunk 2077", 49.99, "RPG", "images/cyberpunk2077.jfif", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
                 new Game(3, "GTA VI", 79.99, "Action", "images/gta6.jpg", "Moins bien que Wordle et le jeu précédent mais plus cher"),
                 new Game(4, "Baldur's Gate 3", 59.99, "RPG", "images/bd3.jpg", "Plongez dans une aventure épique dans les Royaumes Oubliés avec des choix qui façonnent votre destin"),
-                new Game(5, "Groenland: Le Jeu", 99.99, "MEUPORG", "images/fortnite.jpg", "Mettez tout en oeuvre pour acheter le Groenland dans ce MEUPORG révolutionnaire, utilisez la ruse, l'intimidation ainsi que les droits de douanes pour convaincre les autres pays de vous laisser l'acheter!"),
-
+                new Game(5, "Groenland: Le Jeu", 99.99, "MEUPORG", "images/groenland.jpg", "Mettez tout en oeuvre pour acheter le Groenland dans ce MEUPORG révolutionnaire, utilisez la ruse, l'intimidation ainsi que les droits de douanes pour convaincre les autres pays de vous laisser l'acheter!"),
                 // 2ème ligne
                 new Game(6, "The Witcher 3: Wild Hunt", 39.99, "RPG", "images/witcher3.jpg", "Incarnez Geralt de Riv, un chasseur de monstres solitaire, dans un monde ouvert riche en quêtes et en choix moraux"),
                 new Game(7, "The Legend of Zelda: Breath of the Wild", 59.99, "Aventure", "images/zelda.jpg", "Explorez le vaste monde d'Hyrule sur votre fidèle poney"),
@@ -151,25 +150,23 @@ class UI{
             col.className = 'col';
             // création de la carte du jeu
             col.innerHTML = `
-                <div class="card h-100 shadow-sm border-0"> 
+                <div class="card h-100 shadow-sm border-0 game-card" data-id="${game.id}">
                     <img src="${game.image}" class="card-img-top" alt="${game.title}">
-                     <div class="card-body d-flex flex-column">
+                    
+                    <div class="card-body d-flex flex-column">
                         
-                        <div class="d-flex justify-content-between align-items-start mb-3">
-                            <h5 class="card-title mb-0 text-truncate" style="max-width: 70%;" title="${game.title}">
-                                ${game.title}
-                            </h5>
-                            <span class="fs-5 fw-bold text-primary text-nowrap">
+                        <h5 class="card-title mb-3 text-truncate" title="${game.title}">
+                            ${game.title}
+                        </h5>
+
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            
+                            <span class="fs-4 fw-bold text-primary">
                                 ${game.price} €
                             </span>
-                        </div>
 
-                        <div class="mt-auto d-flex gap-2">
-                            <button class="btn btn-outline-dark flex-grow-1 details-btn" data-id="${game.id}">
-                                <i class="bi bi-eye"></i> Voir
-                            </button>
-                            <button class="btn btn-success add-to-cart-btn" data-id="${game.id}">
-                                <i class="bi bi-cart-plus"></i>
+                            <button class="btn btn-success add-to-cart-btn rounded-circle p-2 shadow-sm" style="width: 45px; height: 45px;" data-id="${game.id}">
+                                <i class="bi bi-cart-plus fs-5"></i>
                             </button>
                         </div>
                     </div>
@@ -286,17 +283,17 @@ document.addEventListener('DOMContentLoaded', () => {
     //  ------gestion evenements de la grille des jeux
     document.getElementById('game-list').addEventListener('click', (e) => {
         // clic 'ajouter au panier'
-        if(e.target.closest('.add-to-cart-btn')){
-            const btn = e.target.closest('.add-to-cart-btn');
-            const id = btn.dataset.id;
+        const addBtn = e.target.closest('.add-to-cart-btn');
+        if (addBtn) {
+            const id = addBtn.dataset.id;
             const game = Store.getGames().find(g => g.id == id);
             myCart.addItem(game);
+            return; 
         }
 
-        //clic sur 'détails"
-        if(e.target.closest('.details-btn')){
-            const btn = e.target.closest('.details-btn');
-            const id = btn.dataset.id;
+        const card = e.target.closest('.game-card');
+        if (card) {
+            const id = card.dataset.id; 
             UI.openProductModal(id);
         }
     });
