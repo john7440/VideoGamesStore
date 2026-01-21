@@ -25,20 +25,21 @@ class Store{
             // note: je sépare volontaireemnt avec un commentaire les données tout les 5 jeux pour refléter l'affichage du site
             games = [
                 // La première ligne de jeux
-                new Game(1, "The Legend of Zelda: Breath of the Wild", 59.99, "Aventure", "images/zelda.jpg", "Explorez le vaste monde d'Hyrule sur votre fidèle poney"),
-                new Game(2, "Cyberpunk 2077", 49.99, "RPG", "images/cyberpunk2077.jpg", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
-                new Game(3, "GTA VI", 79.99, "Action", "images/gta6.webp", "Moins bien que Wordle et le jeu précédent mais plus cher"),
-                new Game(4, "God of War", 39.99, "Action", "images/god-of-war.jpg", "Incarnez Kratos dans sa quête épique à travers le nord (de la France)"),
-                new Game(5, "World of Warcraft", 29.99, "MEUPORG", "images/wow.jpg", "Rejoignez des milliards de joueurs dans ce MEUPORG légendaire et vivez des aventures épiques dans le monde d'Azeroth"),
+                new Game(1, "PowerWash Wimulator 2", 49.99, "Simulation", "images/power2.jpg", "Devenez le maître du nettoyage haute pression dans ce jeu de simulation relaxant, satisfaisant et mieux que GTA VI"),
+                new Game(2, "Cyberpunk 2077", 49.99, "RPG", "images/cyberpunk2077.jfif", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
+                new Game(3, "GTA VI", 79.99, "Action", "images/gta6.jpg", "Moins bien que Wordle et le jeu précédent mais plus cher"),
+                new Game(4, "Baldur's Gate 3", 59.99, "RPG", "images/bd3.jpg", "Plongez dans une aventure épique dans les Royaumes Oubliés avec des choix qui façonnent votre destin"),
+                new Game(5, "Groenland: Le Jeu", 99.99, "MEUPORG", "images/fortnite.jpg", "Mettez tout en oeuvre pour acheter le Groenland dans ce MEUPORG révolutionnaire, utilisez la ruse, l'intimidation ainsi que les droits de douanes pour convaincre les autres pays de vous laisser l'acheter!"),
+
                 // 2ème ligne
-                new Game(6, "Baldur's Gate 3", 59.99, "RPG", "images/bd3.jpg", "Plongez dans une aventure épique dans les Royaumes Oubliés avec des choix qui façonnent votre destin"),
-                new Game(7, "The Witcher 3: Wild Hunt", 39.99, "RPG", "images/witcher3.jpg", "Incarnez Geralt de Riv, un chasseur de monstres solitaire, dans un monde ouvert riche en quêtes et en choix moraux"),
-                new Game(8, "PowerWash Wimulator 2", 49.99, "Simulation", "images/among-us.jpg", "Travaillez en équipe pour accomplir des tâches tout en démasquant les imposteurs parmi vous"),
-                new Game(9, "Groenland: Le Jeu", 99.99, "MEUPORG", "images/fortnite.jpg", "Mettez tout en oeuvre pour acheter le Groenland dans ce MEUPORG révolutionnaire, utilisez la ruse, l'intimidation ainsi que les droits de douanes pour convaincre les autres pays de vous laisser l'acheter!"),
-                new Game(10, "Red Dead Redemption 2", 59.99, "Aventure", "images/rdr2.jpg", "Plongez dans l'Ouest sauvage américain avec Arthur Morgan et la bande de Dutch van der Linde"),
+                new Game(6, "The Witcher 3: Wild Hunt", 39.99, "RPG", "images/witcher3.jpg", "Incarnez Geralt de Riv, un chasseur de monstres solitaire, dans un monde ouvert riche en quêtes et en choix moraux"),
+                new Game(7, "The Legend of Zelda: Breath of the Wild", 59.99, "Aventure", "images/zelda.jpg", "Explorez le vaste monde d'Hyrule sur votre fidèle poney"),
+                new Game(8, "Red Dead Redemption 2", 59.99, "Aventure", "images/rdr2.jpg", "Plongez dans l'Ouest sauvage américain avec Arthur Morgan et la bande de Dutch van der Linde"),
+                new Game(9, "God of War", 39.99, "Action", "images/god-of-war.webp", "Incarnez Kratos dans sa quête épique à travers le nord (de la France)"),
+                new Game(10, "World of Warcraft", 29.99, "MEUPORG", "images/wow.webp", "Rejoignez des milliards de joueurs dans ce MEUPORG légendaire et vivez des aventures épiques dans le monde d'Azeroth"),
                 // 3ème ligne
-                new Game(11, "Wasteland 3", 79.99, "RPG", "images/wasteland3.jpg", "Explorez un monde post-apocalyptique rempli de dangers et de choix moraux dans ce RPG tactique au tour par tour"),
-                new Game(12, "Fallout 3", 49.99, "RPG", "images/fallout3.jpg", "Explorez les ruines de Washington D.C. dans ce RPG post-apocalyptique acclamé par la critique (et par moi même)"),
+                new Game(11, "Wasteland 3", 79.99, "RPG", "images/wasteland3.avif", "Explorez un monde post-apocalyptique rempli de dangers et de choix moraux dans ce RPG tactique au tour par tour"),
+                new Game(12, "Fallout 3", 49.99, "RPG", "images/fallout3.webp", "Explorez les ruines de Washington D.C. dans ce RPG post-apocalyptique acclamé par la critique (et par moi même)"),
             ];
 
     } else {
