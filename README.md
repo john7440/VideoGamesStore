@@ -5,6 +5,7 @@
 ## Sommaire
 - [Fonctionnalités](#fonctionalités)
 - [Technologies Utilisées](#technologies-utilisées)
+- [Structure du projet](#structure-du-projet)
 
 ## Fonctionnalités
 
@@ -36,4 +37,22 @@ Le projet a été réalisé sans Framework JS lourd
   - Approche orientée objet (POO)
   - Utilisation du **Local storage** pour simuler une base de données
   - Pas de dépendances externes utilisées
+    
+## Structure du projet
+
+```text
+project/
+├─ docs
+  └─ maquettev10                         # La maquette du site (en format png, effectué sur excalidraw)
+├─ index.html                            # la partie html avec bootstrap
+├─ styles.css                            # la partie CSS personnalisé
+├─ app.js                                # la partie JavaScrit pour gérer la dynamique du site
+└─ images/                               # les images utilisées pour les jeux 
+   ├─ bd3.jpg
+   ├─ cyberpunk2077.jfif
+   ├─ fallout3.webp
+   ├─ gta6.jpg
+   ├─ power2.jpg
+   └─ starfiel.jpg(etc.)
+```
  
