@@ -4,6 +4,7 @@
 
 ## Sommaire
 - [Fonctionnalités](#fonctionalités)
+- [Technologies Utilisées](#technologies-utilisées)
 
 ## Fonctionnalités
 
@@ -23,3 +24,16 @@
 - **Gestion des Jeux**: Uniquement pour ajouter des nouveaux jeux (via un formulaire)
 - **Persistance des données**: Les nouveaux jeux sont sauvegardés dans le **Local Storage** du navigateur (reste après un rafraichissment de la page)
   
+## Technologies Utilisées
+
+Le projet a été réalisé sans Framework JS lourd
+
+- **HTML5**: Structure sémantique et accessible
+- **CSS et Bootstrap 5**:
+  - CSS personnalisé dans `style.css`
+  - Utilisation de bootstrap pour la grille et les composants (Modales, navbar)
+- **Javascrpit**:
+  - Approche orientée objet (POO)
+  - Utilisation du **Local storage** pour simuler une base de données
+  - Pas de dépendances externes utilisées
+ 
