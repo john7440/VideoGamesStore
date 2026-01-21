@@ -11,28 +11,32 @@
         body {
         background-color: #f8f9fa; 
         }
+
         .admin-panel {
             border: 2px solid #0d6efd; 
             background-color: #ffffff;
             border-radius: 10px;
             display: none; 
         }
+
         .category-pills .btn {
             border-radius: 20px;
             padding-left: 20px;
             padding-right: 20px;
         }
+
         .card-img-top {
             height: 300px;
             object-fit: cover;
-            object-position: top
+            object-position: center;
+            border-radius: 25px;
+            
         }
 
         #modal-img {
         height: 300px; 
-        object-fit: cover; 
-        object-position: center top; 
-        border-radius: 10px; 
+        object-fit:fill;
+        border-radius: 25px; 
         }
 
         /* Responsive */
@@ -50,7 +54,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
         <div class="container">
             <div class="d-flex align-items-center gap-3">
-                <a class="navbar-brand fw-bold fs-3" href="#">LOGO</a>
+                <a class="navbar-brand fw-bold fs-3" href="#">GameZone</a>
                 <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#adminModal">
                 <i class="bi bi-gear"></i> Admin
                 </button>
@@ -75,14 +79,14 @@
 
         <div class="text-center my-5 p-4 bg-secondary bg-opacity-10 rounded-3 shadow-sm border">
             <h1 class="display-4 fw-bold">Bienvenue sur GameZone</h1>
-            <p class="lead">Votre boutique en ligne pour les meilleurs jeux vidéo</p>
+            <p class="lead">Votre boutique en ligne pour les 'meilleurs' jeux vidéo</p>
         </div>
 
         <div class="d-flex justify-content-center flex-wrap gap-3 mb-4 category-pills" id="category-filters">
             <button class="btn btn-dark active" data-category="all">Tous</button>
             </div>
 
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="game-list">     
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3" id="game-list">     
             </div>
 
     </div>
@@ -145,7 +149,7 @@
                                 <option value="Action">Action</option>
                                 <option value="Aventure">Aventure</option>
                                 <option value="Meuporg">MEUPORG</option>
-                                <option value="Sport">Sport</option>
+                                <option value="Simulation">Simulation</option>
                             </select>    
                         </div>
                         <div class="col-md-6">
@@ -206,7 +210,7 @@
                                 <button class="btn btn-primary btn-lg" id="modal-add-btn">
                                     Ajouter au panier
                                 </button>
-                                <button class="btn btn-outline-secondary">Acheter maintenant</button>
+                                <button class="btn btn-outline-secondary" id="modal-buy-btn">Acheter maintenant</button>
                             </div>
                         </div>
                     </div>
