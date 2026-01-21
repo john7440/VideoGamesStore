@@ -47,19 +47,20 @@ Le projet a été réalisé sans Framework JS lourd
 ## Structure du projet
 
 ```text
-project/
+projet/
 ├─ docs
-  └─ maquettev10                         # La maquette du site (en format png, effectué sur excalidraw)
+  └─ maquettev10                         # La maquette du site (en format png, effectué sur Excalidraw)
 ├─ index.html                            # la partie html avec bootstrap
 ├─ styles.css                            # la partie CSS personnalisé
 ├─ app.js                                # la partie JavaScrit pour gérer la dynamique du site
+├─ README.md                             # ce fichier                                
 └─ images/                               # les images utilisées pour les jeux 
    ├─ bd3.jpg
    ├─ cyberpunk2077.jfif
    ├─ fallout3.webp
    ├─ gta6.jpg
    ├─ power2.jpg
-   └─ starfiel.jpg(etc.)
+   └─ starfield.jpg(etc.)
 ```
 ## Architecture du code
 
@@ -75,7 +76,7 @@ Le code JavaScript (`app.js`) est structuré autour de 4 classes principales pou
 - **Feedback Utilisateur :**
     * Les boutons changent d'état au survol
     * Des alertes confirment les actions (ajout panier, commande validée)
-- **Modales :** Utilisation intensive des modales pour éviter les rechargements de page et garder l'utilisateur dans le contexte d'achat
+- **Modales :** Utilisation des modales pour éviter les rechargements de page et garder l'utilisateur dans le contexte d'achat
 
 ## Installation et Utilisation
 
