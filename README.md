@@ -8,6 +8,9 @@
 - [Structure du projet](#structure-du-projet)
 - [Architecture du code](#architecture-du-code)
 - [Choix de design et UX](#choix-de-design-et-ux)
+- [Installation et Utilisation](#installation-et-utilisation)
+- [Qualité du code](#qualité-du-code)
+- [License](#licence)
   
 
 ## Fonctionnalités
@@ -72,7 +75,28 @@ Le code JavaScript (`app.js`) est structuré autour de 4 classes principales pou
 - **Feedback Utilisateur :**
     * Les boutons changent d'état au survol
     * Des alertes confirment les actions (ajout panier, commande validée)
-   **Modales :** Utilisation intensive des modales pour éviter les rechargements de page et garder l'utilisateur dans le contexte d'achat
+- **Modales :** Utilisation intensive des modales pour éviter les rechargements de page et garder l'utilisateur dans le contexte d'achat
+
+## Installation et Utilisation
+
+1. Cloner le projet:
+   ```bash
+   git clone https://github.com/john7440/VideoGamesStore.git
+   ```
+2.  Ouvrir le fichier **`index.html`** dans n'importe quel navigateur moderne (Chrome, Firefox, Edge)
+3.  Ou via Vscode avec le plugin LiveServer et clique droit 'Open with Live Server'
+4.  **Pour tester l'admin :**
+    * Cliquer sur "Admin" dans le menu
+    * Remplir le formulaire puis cliquer sur le bouton 'ajouter un jeu'
+    * Le jeu s'ajoute immédiatement à la grille et au LocalStorage
+
+## Qualité du code
+
+- Validation Sonarqube respectée
+- Séparation HTML / CSS / JS
+
+## Licence
+Je ne possède pas les droits sur les images présentent sur le site, le site est utilisé uniquement a des fins pédagogique pour améliorer mes compétences en Web
 
 
 
