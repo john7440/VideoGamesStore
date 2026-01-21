@@ -1,6 +1,6 @@
 # GameZone - Boutique E-Commerce SPA
 
-**GameZone** est une application web de type **SPA (Single Page Application)** permettant de consulter, filtrer et acheter des jeux vidéo. Le projet met l'accent sur l'expérience utilisateur, le design responsive et une architecture JavaScript orientée objet (POO)
+**GameZone** est une application web de type **SPA (Single Page Application)** permettant de consulter, filtrer et acheter des jeux vidéo. Le projet met l'accent sur l'expérience utilisateur, le design responsive  avec Bootstrap et une architecture JavaScript orientée objet (POO)
 
 ## Sommaire
 - [Fonctionnalités](#fonctionalités)
@@ -49,7 +49,13 @@ Le projet a été réalisé sans Framework JS lourd
 ```text
 projet/
 ├─ docs
-  └─ maquettev10                         # La maquette du site (en format png, effectué sur Excalidraw)
+|  ├─ 01-Usecase
+|  |  ├─ usecase.png                     # diagramme use case en format png
+|  |  └─ usecase.puml                    # diagramme use case en format plantuml
+|  ├─ 02-Class
+|  |  ├─ class.png                       # diagramme de classe en format png
+|  |  └─ class.puml                      # diagramme de classe en format plantuml
+|  └─ maquettev10                        # La maquette du site (en format png, effectué sur Excalidraw)
 ├─ index.html                            # la partie html avec bootstrap
 ├─ styles.css                            # la partie CSS personnalisé
 ├─ app.js                                # la partie JavaScrit pour gérer la dynamique du site
