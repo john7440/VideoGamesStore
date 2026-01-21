@@ -129,19 +129,19 @@
                 <form id="add-game-form">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label">Titre du jeu:</label>
+                            <label class="form-label" for="admin-title">Titre du jeu:</label>
                             <input type="text" class="form-control" id="admin-title" required placeholder="Ex: CyberPlouc 2078">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">URL Image:</label>
+                            <label class="form-label" for="admin-image">URL Image:</label>
                             <input type="url" class="form-control" id="admin-image" required placeholder="https://....">
                         </div>
                         <div class="col-12">
-                            <label class="form-label">Description:</label>
+                            <label class="form-label" for="admin-desc">Description:</label>
                             <textarea class="form-control" id="admin-desc" rows="2" required placeholder="Il était une fois..."></textarea>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Catégorie:</label>
+                            <label class="form-label" for="admin-category">Catégorie:</label>
                             <select class="form-select" id="admin-category" required>
                                 <option value="RPG">RPG</option>
                                 <option value="Action">Action</option>
@@ -151,7 +151,7 @@
                             </select>    
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Prix (€):</label>
+                            <label class="form-label" for="admin-price">Prix (€):</label>
                             <input type="number" class="form-control" id="admin-price" required min="0" step="0.01" placeholder="Ex: 59.99">
                         </div>    
                         <div class="col-12 mt-4 text-end">
@@ -228,13 +228,13 @@
                 <div class="modal-body px-4 pb-4">
                     <form id="login-form">
                         <div class="mb-3">
-                            <label class="form-label fs-5 login-title">login:</label>
+                            <label class="form-label fs-5 login-title" for="login">login:</label>
                             <input type="text" class="form-control rounded border-dark" placeholder="admin123" required>
                         </div>
                         
                         <div class="mb-4">
-                            <label class="form-label fs-5 login-title">password:</label>
-                            <input type="password" class="form-control roundedborder-dark" placeholder="Louvre" required>
+                            <label class="form-label fs-5 login-title" for="password">password:</label>
+                            <input type="password" class="form-control rounded border-dark" placeholder="Louvre" required>
                         </div>
 
                         <div class="d-flex justify-content-between gap-2 mb-3">
