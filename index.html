@@ -45,9 +45,12 @@
         }
 
         #modal-img {
-        height: 300px; 
-        object-fit:fill;
-        border-radius: 25px; 
+            height: 500px; /* Très grand pour bien voir */
+            width: 100%;
+            object-fit: fill; /* ICI : on affiche l'image ENTIÈRE sans couper (bandes blanches possibles) */
+            background-color: #f0f0f0; /* Fond gris léger derrière si l'image ne remplit pas tout */
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         /* Responsive */
@@ -203,10 +206,10 @@
     <div class="modal fade" id="productModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header border-0">
+                <div class="modal-header border-0 pb-0">
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body pt-0">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <img src="" id="modal-img" class="img-fluid rounded shadow-sm w-100" alt="Jeu">
@@ -221,7 +224,7 @@
                                 <button class="btn btn-primary btn-lg" id="modal-add-btn">
                                     Ajouter au panier
                                 </button>
-                                <button class="btn btn-outline-secondary" id="modal-buy-btn">Acheter maintenant</button>
+                                <button class="btn btn-success btn-lg text-white" id="modal-buy-btn">Acheter maintenant</button>
                             </div>
                         </div>
                     </div>
