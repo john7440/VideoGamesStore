@@ -12,6 +12,10 @@ class Game{
         this.image = image;
         this.description = description;
     }
+
+    getFormattedPrice() {
+        return this.price.toFixed(2) + " €";
+    }
 }
 
 // Classe Store pour gérer les jeux disponibles en Local Storage
@@ -25,7 +29,7 @@ class Store{
             // note: je sépare volontairement avec un commentaire les données tout les 5 jeux pour refléter l'affichage du site
             games = [
                 // La première ligne de jeux
-                new Game(1, "PowerWash Wimulator 2", 49.99, "Simulation", "images/power2.jpg", "Devenez le maître du nettoyage haute pression dans ce jeu de simulation relaxant, satisfaisant et mieux que GTA VI"),
+                new Game(1, "PowerWash Simulator 2", 49.99, "Simulation", "images/power2.jpg", "Devenez le maître du nettoyage haute pression dans ce jeu de simulation relaxant, satisfaisant et mieux que GTA VI"),
                 new Game(2, "Cyberpunk 2077", 49.99, "RPG", "images/cyberpunk2077.jfif", "Plongez dans un futur dystopique (mais pas tant que ça) rempli de technologies avancées et de choix moraux ou immoraux"),
                 new Game(3, "GTA VI", 129.99, "Action", "images/gta6.jpg", "Après des années d'attente et un budget plus important que le PIB de certains pays, ce jeu s'avère être moins bien que Wordle et le jeu précédent mais plus cher!"),
                 new Game(4, "Baldur's Gate 3", 59.99, "RPG", "images/bd3.jpg", "Plongez dans une aventure épique dans les Royaumes Oubliés avec des choix qui façonnent votre destin"),
@@ -165,7 +169,7 @@ class UI{
                         <div class="mt-auto d-flex justify-content-between align-items-center">
                             
                             <span class="fs-4 fw-bold text-primary">
-                                ${game.price} €
+                                ${game.getFormattedPrice()}
                             </span>
 
                             <button class="btn btn-success add-to-cart-btn rounded-circle p-2 shadow-sm" style="width: 45px; height: 45px;" data-id="${game.id}">
@@ -233,7 +237,7 @@ class UI{
             if(catBadge) catBadge.innerText = game.category;
 
             document.getElementById('modal-category').innerText = game.category;
-            document.getElementById('modal-price').innerText = game.price;
+            document.getElementById('modal-price').innerText = game.getFormattedPrice();
             document.getElementById('modal-desc').innerText = game.description;
             document.getElementById('modal-img').src = game.image;
 
@@ -361,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         alert(`Jeu "${title}" ajouté avec succès !`);
     });
-    
+
     document.getElementById('login-form').addEventListener('submit', (e) => {
         e.preventDefault();
         
