@@ -148,32 +148,39 @@ class Cart{
 //---------------------------------gestion de l'affichage---------------------------//
 class UI{
     // méthode pour afficher les jeux sur la page
-    static displayGames(games){
+    static displayGames(games) {
         const listContainer = document.getElementById('game-list');
         listContainer.innerHTML = '';
 
         games.forEach(game => {
             const col = document.createElement('div');
             col.className = 'col';
-            // création de la carte du jeu
+            
+            // On garde le data-id et la classe game-card pour le clic global
             col.innerHTML = `
                 <div class="card h-100 shadow-sm border-0 game-card" data-id="${game.id}">
+                    
                     <img src="${game.image}" class="card-img-top" alt="${game.title}">
                     
-                    <div class="card-body d-flex flex-column">
+                    <div class="card-body d-flex flex-column p-3">
                         
-                        <h4 class="card-title mb-3 text-truncate" title="${game.title}">
-                            ${game.title}
-                        </h4>
+                        <div class="mb-0">
+                            <h4 class="card-title text-dark" title="${game.title}">
+                                ${game.title}
+                            </h4>
+                            </div>
 
-                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                        <div class="mt-auto d-flex justify-content-between align-items-end">
                             
-                            <span class="fs-4 fw-bold text-primary">
-                                ${game.getFormattedPrice()}
-                            </span>
+                            <div class="d-flex flex-column">
+                                <small class="text-muted" style="font-size: 1rem;" mb-3>Prix</small>
+                                <span class="price-tag lh-1">
+                                    ${game.getFormattedPrice ? game.getFormattedPrice() : game.price + ' €'}
+                                </span>
+                            </div>
 
-                            <button class="btn btn-success add-to-cart-btn rounded-circle p-2 shadow-sm" style="width: 45px; height: 45px;" data-id="${game.id}">
-                                <i class="bi bi-cart-plus fs-5"></i>
+                            <button class="btn btn-primary btn-square shadow-sm add-to-cart-btn" data-id="${game.id}">
+                                <i class="bi bi-cart-plus-fill fs-5"></i>
                             </button>
                         </div>
                     </div>
