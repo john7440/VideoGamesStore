@@ -13,6 +13,7 @@ class Game{
         this.description = description;
     }
 
+    //méthode qui retourne le prix formaté
     getFormattedPrice() {
         return this.price.toFixed(2) + " €";
     }
@@ -25,8 +26,8 @@ class Store{
     static getGames() {
         let games;
         if(localStorage.getItem("games") === null){
-            // Les données par défaut pour le site pusiqu'il n'y a pas encore de jeux en Local Storage
-            // note: je sépare volontairement avec un commentaire les données tout les 5 jeux pour refléter l'affichage du site
+            // Les données par défaut pour le site puisqu'il n'y a pas encore de jeux en Local Storage
+            // note: je sépare volontairement avec un commentaire les données tous les 5 jeux pour refléter l'affichage du site
             games = [
                 // La première ligne de jeux
                 new Game(1, "PowerWash Simulator 2", 49.99, "Simulation", "images/power2.jpg", "Devenez le maître du nettoyage haute pression dans ce jeu de simulation relaxant, satisfaisant mais pas très économique en eau"),
@@ -146,6 +147,7 @@ class Cart{
 }
 
 //---------------------------------gestion de l'affichage---------------------------//
+
 class UI{
     // méthode pour afficher les jeux sur la page
     static displayGames(games) {
@@ -154,8 +156,7 @@ class UI{
 
         games.forEach(game => {
             const col = document.createElement('div');
-            col.className = 'col';
-            
+            col.className = 'col';  
             col.innerHTML = `
                 <div class="card h-100 shadow-sm border-0 game-card" data-id="${game.id}">
                     
@@ -211,20 +212,24 @@ class UI{
 
         categories.forEach(cat => {
             const btn = document.createElement('button');
+            //si la catégorie est 'all' on met le bouton en foncé sinon avec une bordure
             btn.className = `btn ${cat === 'all' ? 'btn-dark' : 'btn-outline-dark'}`;
             btn.textContent = cat === 'all' ? 'Tout' : cat;
+            //on ajoute un attribut au bouton pour connaitre sa categorie
             btn.dataset.category = cat;
 
             btn.addEventListener('click', (e) => {
-                // gestion visuelle du bouton actif 
+                // -------gestion visuelle du bouton actif ---------
+                //d'abord on remet tous les bouton inactifs
                 document.querySelectorAll('#category-filters .btn').forEach(b => {
                     b.classList.remove('btn-dark');
                     b.classList.add('btn-outline-dark');
                 });
+                // puis on met en actif le bouton qui a été cliqué en iinversant les classes
                 e.target.classList.remove('btn-outline-dark');
                 e.target.classList.add('btn-dark');
 
-                // on filtre les jeux
+                // après on filtre les jeux
                 UI.filterGames(cat);
         });
             categoryContainer.appendChild(btn);
@@ -237,12 +242,10 @@ class UI{
         const game = games.find(g => g.id == gameId);
 
         if(game){
+            //remplir le contenu de la modale
             document.getElementById('modal-title').innerText = game.title;
-
             const catBadge = document.getElementById('modal-category');
             if(catBadge) catBadge.innerText = game.category;
-
-            document.getElementById('modal-category').innerText = game.category;
             document.getElementById('modal-price').innerText = game.getFormattedPrice();
             document.getElementById('modal-desc').innerText = game.description;
             document.getElementById('modal-img').src = game.image;
@@ -293,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
     UI.displayGames(Store.getGames());
     UI.setupCategories();
 
-    //  ------gestion evenements de la grille des jeux
+    //  ------gestion evenements de la grille des jeux----------
     document.getElementById('game-list').addEventListener('click', (e) => {
         // clic 'ajouter au panier'
         const addBtn = e.target.closest('.add-to-cart-btn');
@@ -311,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ------------gestion evenements panier
+    // ------------gestion evenements panier-----------
     document.getElementById('cart-items-container').addEventListener('click', (e) => {
         // --changement quantité
         if(e.target.classList.contains('qty-btn')){
@@ -328,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --valider commande
+    // --valider la commande
     document.getElementById('validate-order').addEventListener('click', () => {
         if (myCart.items.length > 0){
             alert('Merci pour votre commande !');
@@ -345,7 +348,8 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Votre panier est vide !');
         }
     });
-
+        // ------------gestion evenements admin-----------
+        //pour l'ajout d'un nouveau jeu
         document.getElementById('add-game-form').addEventListener('submit', (e) => {
         e.preventDefault(); 
         
@@ -354,8 +358,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const desc = document.getElementById('admin-desc').value;
         const category = document.getElementById('admin-category').value;
         const price = Number.parseFloat(document.getElementById('admin-price').value);
-        
         const id = Date.now(); 
+
         const newGame = new Game(id, title, price, category, image, desc);
         
         Store.addGame(newGame); 
@@ -372,6 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alert(`Jeu "${title}" ajouté avec succès !`);
     });
 
+    // ------------gestion evenements connexion qui est juste simulé pour le moment-----------
     document.getElementById('login-form').addEventListener('submit', (e) => {
         e.preventDefault();
         
