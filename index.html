@@ -12,7 +12,22 @@
 
 <body>
 
-    <!----------------------- barre navigation ------------------------------>
+    <!---------------------------------------------------- BARRE DE NAVIGATION ------------------------------------------------------>
+
+    <!---navbar-expand-lg: la navbar se déploie en version horizontale sur les grands écrans -->
+    <!-- navbar-brand: style bootstrap pour logo--> 
+    <!-- shadow-sm: ombre légère pour effet de profondeur -->
+    <!-- sticky-top: la navabar est tjr fixée en haut -->
+    <!-- d-flex: active la flexbox-->
+    <!-- fw-bold: font-weight bold -->
+    <!-- fs-[de 1 a 6]: font-size (du plus grand au plus petit) -->
+    <!-- fst-italic: font-style: italic--> 
+    <!-- btn-[sm/md/lg]: boutons (petit/moyen/grand)--> 
+    <!-- data-bs-toggle: indique que l'on souhaite ouvrir quelque chose ici avec "modal" (une modale) -->  
+    <!-- data-bs-target: suivie de l'ID de la classe a ouvrir--> 
+    <!-- bi bi-gear: icone de bootstrap (un engrenage)--> 
+    <!-- bi bi-cart4: icone bootstrap d'un panier--> 
+
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
         <div class="container">
             <div class="d-flex align-items-center gap-3">
@@ -36,10 +51,27 @@
         </div>
     </nav>
 
-    <!----------------------- Hero ------------------------------>
+    <!--------------------------------------------------------- HERO --------------------------------------------->
+
+    <!-- container: conteneur avec marge responsive---->
+    <!-- mb-3 : marge botom de 3-->
+    <!-- my-5 : marge verticale de 5-->
+    <!-- p-4 : padding de 4-->
+    <!-- bg-secondary : background (gris)-->
+    <!-- rounded-3 : bordures arrondies moyennes-->
+    <!-- border : bordure fine --> 
+    <!-- display-4 : typo 'display' de Bootstrap (police grande)-->
+    <!-- lead: texte de style 'introduction' (plus grande que la normale)-->
+    <!-- flex-wrap: permet de passer à la ligne (pour le responsive)-->
+    <!-- active: état actif --> 
+    <!-- - `row` : conteneur de ligne pour la grille Bootstrap -->
+    <!-- - `row-cols-1` : 1 colonne par défaut (mobile) -->
+    <!-- - `row-cols-md-3` : 3 colonnes sur écrans moyens (tablettes) -->
+    <!-- - `row-cols-lg-5` : 5 colonnes sur grands écrans (desktop) -->
+
     <div class="container mb-5">
 
-        <div class="text-center my-5 p-4 bg-secondary bg-opacity-10 rounded-3 shadow-sm border">
+        <div class="text-center my-5 p-4 bg-secondary bg-opacity-10 rounded-4 shadow-md border">
             <h1 class="display-4 fw-bold">Bienvenue sur GameZone</h1>
             <p class="lead">Votre boutique en ligne pour les 'meilleurs' jeux vidéo</p>
         </div>
@@ -47,14 +79,28 @@
         <div class="d-flex justify-content-center flex-wrap gap-3 mb-4 category-pills" id="category-filters">
             <button class="btn btn-dark active" data-category="all">Tous</button>
             </div>
-
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3" id="game-list">     
             </div>
 
     </div>
 
+  
+    <!----------------------------------------------------FOOTER------------------------------------------------------------>
 
-    <!--------------------------footer--------------------------->
+    <!-- mt-auto: margin top auto (pousse en bas avec flexbox) -->
+    <!-- col-lg-3 : 3/12 colonnes sur grands écrans (25%) -->
+    <!-- col-md-6 : 6/12 colonnes sur moyens écrans (50%) -->
+    <!-- text-uppercase : texte en majuscules -->
+    <!-- list-unstyled : enlève les puces et marges par défaut des listes  -->
+    <!-- text-decoration-none : enlève le soulignement des liens -->
+    <!-- form-control : style Bootstrap pour l'input -->
+    <!-- aria-label : accessibilité pour les lecteurs d'écran -->
+    <!-- align-items-center : alignement vertical centré  -->
+    <!-- text-center text-md-start : texte centré sur mobile, aligné à gauche sur tablette+  -->
+    <!-- &copy; : symbole © -->
+    <!-- list-inline : affiche les éléments de liste horizontalement -->
+    <!-- list-inline-item` : élément d'une liste inline -->
+    
     <footer class="bg-dark text-white pt-5 pb-3 mt-auto border-top border-secondary">
         <div class="container">
             <div class="row">
@@ -122,7 +168,21 @@
         </div>
     </footer>
 
-    <!-----------------------modal admin---------------------->
+    <!---------------------------------------MODAL ADMIN--------------------------------------------------->
+
+    <!-- modal : composant modale Bootstrap -->
+    <!-- fade : animation de transition (fondu) -->
+    <!-- tabindex "-1" : exclut la modale de la navigation au clavier normale -->
+    <!-- modal-header : en-tête Bootstrap standard  -->
+    <!-- btn-close : bouton "X" Bootstrap -->
+    <!-- data-bs-dismiss "modal" : ferme la modale au clic  -->
+    <!-- modal-body : zone principale du contenu de la modale -->
+    <!-- form-label : style Bootstrap pour les labels  -->
+    <!-- type "text" : champ texte simple -->
+    <!-- required : champ obligatoire (validation HTML5) -->
+    <!-- placeholder : texte d'exemple affiché quand c'est vide  -->
+    <!-- type "url" : validation automatique du format URL par le navigateur -->
+
     <div class="modal fade" id="adminModal" tabindex="-1">
     <div class="modal-dialog modal-lg"> <div class="modal-content">
             <div class="modal-header bg-secondary bg-opacity-10">
@@ -169,7 +229,8 @@
     </div>
 </div>
 
-    <!------------------------ Modal Panier -------------------------------->
+    <!------------------------------------------------ MODAL PANIER ---------------------------------------------------->
+
     <div class="modal fade" id="cartModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
@@ -190,7 +251,8 @@
         </div>
     </div>
 
-    <!------------------------ modal produit -------------------------------->
+    <!------------------------------------------------ MODAL PRODUIT --------------------------------------------------->
+
     <div class="modal fade" id="productModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
@@ -221,7 +283,8 @@
         </div>
     </div>
 
-    <!------------------------modal connexion------------------------------------------>
+    <!----------------------------------------------------------- MODAL CONNEXION------------------------------------------>
+
     <div class="modal fade" id="loginModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
             <div class="modal-content border-2 rounded-4">
