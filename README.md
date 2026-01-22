@@ -1,6 +1,6 @@
-# GameZone - Boutique E-Commerce SPA
+# GameZone - Boutique E-Commerce
 
-**GameZone** est une application web de type **SPA (Single Page Application)** permettant de consulter, filtrer et acheter des jeux vidéo. Le projet met l'accent sur l'expérience utilisateur, le design responsive  avec Bootstrap et une architecture JavaScript orientée objet (POO)
+**GameZone** est une application web de type **SPA (Single Page Application)** permettant de consulter, filtrer et acheter des jeux vidéo. Le projet met l'accent sur l'expérience utilisateur, le design responsive avec Bootstrap et une architecture JavaScript orientée objet (POO)
 
 ## Sommaire
 - [Fonctionnalités](#fonctionalités)
