@@ -19,6 +19,8 @@ class Game{
     }
 }
 
+// ---------------------------------------------------------------------------------------------------------
+
 // Classe Store pour gérer les jeux disponibles en Local Storage
 // pour simuler une base de données
 class Store{
@@ -62,6 +64,8 @@ class Store{
         localStorage.setItem('games', JSON.stringify(games));
     }
 }
+
+//-----------------------------------------------------------------------------------------------------
 
 // La classe pour gérer le panier
 class Cart{
@@ -146,8 +150,8 @@ class Cart{
     }
 }
 
-//---------------------------------gestion de l'affichage---------------------------//
 
+//---------------------------------gestion de l'affichage---------------------------//
 class UI{
     // méthode pour afficher les jeux sur la page
     static displayGames(games) {
@@ -285,6 +289,7 @@ class UI{
 
 }
 
+//--------------------------------------------------------------------------//
 //-------------------initialisation et gestion événements------------------//
 
 //panier global
@@ -298,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //  ------gestion evenements de la grille des jeux----------
     document.getElementById('game-list').addEventListener('click', (e) => {
-        // clic 'ajouter au panier'
+        // le clic 'ajouter au panier'
         const addBtn = e.target.closest('.add-to-cart-btn');
         if (addBtn) {
             const id = addBtn.dataset.id;
