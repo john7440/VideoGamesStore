@@ -55,7 +55,8 @@ projet/
 |  ├─ 02-Class
 |  |  ├─ class.png                       # diagramme de classe en format png
 |  |  └─ class.puml                      # diagramme de classe en format plantuml
-|  └─ maquettev10                        # La maquette du site (en format png, effectué sur Excalidraw)
+|  ├─ Spécifications fonctionnelles.pdf  # les spécifications fonctionnelles
+|  └─ maquettev10                        # la maquette du site (en format png, effectué sur Excalidraw)
 ├─ index.html                            # la partie html avec bootstrap
 ├─ styles.css                            # la partie CSS personnalisé
 ├─ app.js                                # la partie JavaScrit pour gérer la dynamique du site
